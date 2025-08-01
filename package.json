@@ -1,0 +1,73 @@
+{
+    "name": "webp-converter",
+    "version": "1.0.0",
+    "description": "Desktop WebP Image Converter with Size Optimization",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder",
+        "build-win": "electron-builder --win",
+        "build-mac": "electron-builder --mac",
+        "build-linux": "electron-builder --linux",
+        "dist": "electron-builder --publish=never"
+    },
+    "keywords": [
+        "webp",
+        "image",
+        "converter",
+        "optimization"
+    ],
+    "author": "Asset Optimization Team",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^28.3.2",
+        "electron-builder": "^26.0.2",
+        "electron-reloader": "^1.2.3"
+    },
+    "dependencies": {
+        "semver": "^7.7.2",
+        "sharp": "^0.34.3"
+    },
+    "build": {
+        "appId": "com.company.webp-converter",
+        "productName": "WebP Converter",
+        "directories": {
+            "output": "dist"
+        },
+        "files": [
+            "**/*",
+            "!node_modules/**/*",
+            "node_modules/sharp/**/*",
+            "!**/*.map"
+        ],
+        "extraResources": [
+            {
+                "from": "preload.js",
+                "to": "preload.js"
+            },
+            {
+                "from": "style.css",
+                "to": "style.css"
+            },
+            {
+                "from": "assets",
+                "to": "assets"
+            }
+        ],
+        "asar": false,
+        "nodeGypRebuild": false,
+        "npmRebuild": false,
+        "win": {
+            "target": "nsis",
+            "icon": "assets/icon.ico"
+        },
+        "mac": {
+            "target": "dmg",
+            "icon": "assets/icon.icns"
+        },
+        "linux": {
+            "target": "AppImage",
+            "icon": "assets/icon.png"
+        }
+    }
+}
