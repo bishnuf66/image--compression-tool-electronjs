@@ -1,12 +1,15 @@
 // ========================================
 // Hot Reload for Development
 // ========================================
-try {
-    require('electron-reloader')(module, {
-        debug: true,
-        watchRenderer: true
-    });
-} catch (_) {}
+// Only use electron-reloader in development
+if (process.env.NODE_ENV === 'development') {
+    try {
+        require('electron-reloader')(module, {
+            debug: true,
+            watchRenderer: true
+        });
+    } catch (_) {}
+}
 
 // ========================================
 // main.js (Main Electron Process)
@@ -14,7 +17,16 @@ try {
 const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const sharp = require('sharp');
+// Patch for sharp native module loading in production
+let sharp;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  // Try to load from unpacked asar if in production
+  const path = require('path');
+  const unpackedSharp = path.join(process.resourcesPath, 'app.asar.unpacked', 'node_modules', 'sharp');
+  sharp = require(unpackedSharp);
+}
 
 // Keep a global reference of the window object
 let mainWindow;
@@ -37,7 +49,7 @@ function createWindow() {
   });
 
   // Load the index.html
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Show window when ready to prevent visual flash
   mainWindow.once('ready-to-show', () => {
