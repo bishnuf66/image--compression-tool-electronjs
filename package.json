@@ -4,17 +4,9 @@
   "description": "Desktop WebP Image Converter with Size Optimization",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "rebuild": "electron-rebuild",
-    "postinstall": "electron-rebuild",
-    "prebuild": "npm run rebuild",
-    "build": "electron-builder",
-    "build-win": "electron-builder --win",
-    "build-mac": "electron-builder --mac",
-    "build-linux": "electron-builder --linux",
-    "dist": "electron-builder --publish=never",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "keywords": [
     "webp",
@@ -25,19 +17,8 @@
   "author": "Bishnu Bishowkarma",
   "license": "MIT",
   "devDependencies": {
-    "@electron-forge/cli": "^7.8.2",
-    "@electron-forge/maker-deb": "^7.8.2",
-    "@electron-forge/maker-rpm": "^7.8.2",
-    "@electron-forge/maker-squirrel": "^7.8.2",
-    "@electron-forge/maker-zip": "^7.8.2",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.8.2",
-    "@electron-forge/plugin-fuses": "^7.8.2",
-    "@electron/fuses": "^2.0.0",
-    "@electron/rebuild": "^4.0.1",
-    "electron": "^28.3.3",
-    "electron-builder": "^26.0.12",
-    "electron-rebuild": "^3.2.9",
-    "electron-reloader": "^1.2.3"
+    "electron": "37.0.0",
+    "electron-builder": "^26.0.12"
   },
   "dependencies": {
     "detect-libc": "^2.0.4",
@@ -48,47 +29,17 @@
   "build": {
     "appId": "com.webx.webp-converter",
     "productName": "WebP Converter By WebX",
-    "directories": {
-      "output": "dist"
-    },
-    "npmRebuild": true,
-    "buildDependenciesFromSource": true,
-    "asar": true,
-    "asarUnpack": [
-      "**/node_modules/sharp/**/*"
-    ],
-    "extraResources": [
-      {
-        "from": "preload.js",
-        "to": "preload.js"
-      },
-      {
-        "from": "style.css",
-        "to": "style.css"
-      },
-      {
-        "from": "assets",
-        "to": "assets"
-      }
-    ],
-    "files": [
-      "**/*",
-      "!node_modules/**/*",
-      "node_modules/sharp/**/*",
-      "!**/*.map"
-    ],
-    "nodeGypRebuild": true,
-    "win": {
-      "target": "nsis",
+    "icon": "assets/icon.png",
+    "mac": {
       "icon": "assets/icon.png"
     },
-    "mac": {
-      "target": "dmg",
-      "icon": "assets/icon.icns"
+    "win": {
+      "target": ["nsis"],
+      "icon": "assets/icon.png"
     },
     "linux": {
-      "target": "AppImage",
-      "icon": "assets/icon.ico"
+      "target": ["AppImage", "deb"],
+      "icon": "assets/icon.png"
     }
   }
 }
