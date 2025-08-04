@@ -16,18 +16,21 @@ A desktop application for converting images to WebP format with size optimizatio
 ## Installation
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - npm (comes with Node.js) or Yarn
 
 ### Steps
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/your-username/webp-converter.git
+   git clone https://github.com/bishnuf66/image--compression-tool-electronjs.git
    cd webp-converter
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
