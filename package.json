@@ -27,8 +27,8 @@
     "sharp": "^0.34.3"
   },
   "build": {
-    "appId": "com.webx.webp-converter",
-    "productName": "WebP Converter By WebX",
+    "appId": "com.bishnu.webp-converter",
+    "productName": "WebP Converter By Bishnu",
     "icon": "assets/icon.png",
     "mac": {
       "icon": "assets/icon.png"
