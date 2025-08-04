@@ -13,6 +13,23 @@ A desktop application for converting images to WebP format with size optimizatio
 - Simple and intuitive user interface
 - Cross-platform support (Windows, macOS, Linux)
 
+## Web Version
+
+A web version of this application is available in the `docs` directory. You can use it directly in your browser without any installation:
+
+1. Open `docs/index.html` in any modern web browser
+2. Drag and drop images or click to select files
+3. Adjust quality settings if needed
+4. Click "Convert" to process your images
+5. Download the converted WebP files
+
+The web version includes:
+- Drag and drop interface
+- Batch conversion support
+- Quality adjustment
+- File size optimization
+- Real-time progress tracking
+
 ## Installation
 
 ### Prerequisites
